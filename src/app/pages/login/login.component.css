@@ -1,0 +1,21 @@
+
+
+main{
+    display: flex;
+    flex-direction: row;
+    height: 100dvh;
+}
+
+main section{
+    flex: 1;
+    height: auto;
+}
+
+.login-form-section{
+    background-color: #f6f6f6;
+}
+
+.form-title{
+    color: var(--bs-teal);
+}
+
