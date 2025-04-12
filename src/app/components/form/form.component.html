@@ -1,0 +1,19 @@
+<form [formGroup]="loginForm">
+
+    <input formControlName="email" placeholder="Email" />
+    <div *NgIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+        <small>Email é obrigatório</small>
+    </div>
+    
+    <input formControlName="password" placeholder="Senha" />
+    <div *NgIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+        <small>Senha é obrigatório</small>
+    </div>
+    
+    <div class="auto-login">
+        <p>Logar automaticamente</p>
+        <app-toggle (toggleBool)="getToggle($event)"></app-toggle>
+    </div>
+    <button type="submit" [disabled]="loginForm.invalid">Enviar</button>
+    
+</form>
