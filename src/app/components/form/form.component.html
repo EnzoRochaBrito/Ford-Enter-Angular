@@ -1,19 +1,65 @@
 <form [formGroup]="loginForm">
+    <div class="form-inputs">
+        
+        <div class="input">
+            <div class="text-input-wrapper">
+                <div class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                    </svg>
+                </div>
+                <input formControlName="user" placeholder="User" />
+            </div>
+            <div class="validator">
+                <div *ngIf="loginForm.controls['user'].value == '' && !loginForm.controls['user'].touched; else userWrong">
+                </div>
+                <ng-template #userWrong>
+                    <svg *ngIf="loginForm.controls['user'].invalid; else userCorrect" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ban" viewBox="0 0 16 16" class="wrong-input">
+                        <path d="M15 8a6.97 6.97 0 0 0-1.71-4.584l-9.874 9.875A7 7 0 0 0 15 8M2.71 12.584l9.874-9.875a7 7 0 0 0-9.874 9.874ZM16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0"/>
+                    </svg>
+                </ng-template>
+                <ng-template #userCorrect>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16" class="correct-input">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                    </svg>
+                </ng-template>
+            </div>
+        </div>
+        
+        <div class="input">
+            <div class="text-input-wrapper">
+                <div class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1"/>
+                    </svg>
+                </div>
+                <input formControlName="password" placeholder="Senha" type="password"/>
+            </div>
+            <div class="validator">
+                <div *ngIf="loginForm.controls['password'].value == '' && !loginForm.controls['password'].touched; else passwordWrong">
+                </div>
+                <ng-template #passwordWrong>
+                    <svg *ngIf="loginForm.controls['password'].invalid; else passwordCorrect" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ban" viewBox="0 0 16 16" class="wrong-input">
+                        <path d="M15 8a6.97 6.97 0 0 0-1.71-4.584l-9.874 9.875A7 7 0 0 0 15 8M2.71 12.584l9.874-9.875a7 7 0 0 0-9.874 9.874ZM16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0"/>
+                    </svg>
+                </ng-template>
+                <ng-template #passwordCorrect>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16" class="correct-input">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                    </svg>
+                </ng-template>
+            </div>
+        </div>
 
-    <input formControlName="email" placeholder="Email" />
-    <div *NgIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
-        <small>Email é obrigatório</small>
+        <div class="auto-login">
+            <p>Logar automaticamente</p>
+            <app-toggle (toggleEmmiter)="autoLoginToggle($event)"></app-toggle>
+        </div>
+        
+        <button type="submit" [disabled]="loginForm.invalid">Enviar</button>
     </div>
     
-    <input formControlName="password" placeholder="Senha" />
-    <div *NgIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
-        <small>Senha é obrigatório</small>
-    </div>
-    
-    <div class="auto-login">
-        <p>Logar automaticamente</p>
-        <app-toggle (toggleBool)="getToggle($event)"></app-toggle>
-    </div>
-    <button type="submit" [disabled]="loginForm.invalid">Enviar</button>
     
 </form>

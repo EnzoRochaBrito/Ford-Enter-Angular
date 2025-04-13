@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Output, output } from '@angular/core';
 
 @Component({
   selector: 'app-toggle',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './toggle.component.html',
   styleUrl: './toggle.component.css',
   animations: [
@@ -10,13 +11,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   ]
 })
 export class ToggleComponent {
-  
-  @Output() toggle = new EventEmitter<boolean>();
-  
+
+  toggleEmmiter = output<boolean>();
   toggleValue: boolean = false;
 
   toggleBool(){
     this.toggleValue = !this.toggleValue;
-    this.toggle.emit(this.toggleValue);
+    this.toggleEmmiter.emit(this.toggleValue);
   }
 }

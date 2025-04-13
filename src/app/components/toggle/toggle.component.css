@@ -1,10 +1,14 @@
+
+.toggle{
+    height: 28px;
+}
+
 .toggle-switch{
     width: 54px;
     height: 28px;
     border-radius: 1rem;
     background: #ccc;
     /* border: 2px solid gray; */
-    padding: 5px;
     position: relative;
     cursor: pointer;
     transition: all .3s;
@@ -16,7 +20,7 @@
     border-radius: 50%;
     position: absolute;
     background-color: white;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .1);
     top: 50%;
     left: 10%;
     transform: translateY(-50%);
@@ -28,4 +32,5 @@
 }
 #button-switch[type="checkbox"]:checked + .toggle-switch .ball{
     left: 55%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
 }

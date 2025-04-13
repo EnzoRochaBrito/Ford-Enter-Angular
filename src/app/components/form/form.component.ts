@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ToggleComponent } from '../toggle/toggle.component';
 import { CommonModule } from '@angular/common';
@@ -13,15 +13,16 @@ export class FormComponent {
 
 autoLogin!: boolean;
 
+
+
 loginForm = new FormGroup({
-  email: new FormControl('', [Validators.required, Validators.email]),
-  password: new FormControl('', [Validators.required, Validators.minLength(8)])
+  user: new FormControl('', [Validators.required, Validators.minLength(5)]),
+  password: new FormControl('', [Validators.required, Validators.minLength(6)])
 })
 
 
-getToggle(value: boolean){
-  alert('asd')
-  this.autoLogin = value;
+autoLoginToggle(event: boolean){
+  console.log(event)
 }
 
 }
