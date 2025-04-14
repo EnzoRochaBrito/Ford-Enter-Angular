@@ -13,7 +13,19 @@ export class FormComponent {
 
 autoLogin!: boolean;
 
+password = 'password';
+isVisible: boolean = false;
 
+helo(){
+  const user = this.loginForm.controls.user.value;
+  const password = this.loginForm.controls.password.value;
+  
+  if (user === 'admin' && password === '123456'){
+    alert('logado')
+  } else {
+    alert('numfoi')
+  }
+}
 
 loginForm = new FormGroup({
   user: new FormControl('', [Validators.required, Validators.minLength(5)]),
