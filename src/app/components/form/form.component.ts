@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ToggleComponent } from '../toggle/toggle.component';
 import { CommonModule } from '@angular/common';
@@ -11,30 +11,27 @@ import { CommonModule } from '@angular/common';
 })
 export class FormComponent {
 
-autoLogin!: boolean;
+  autoLogin!: boolean;
 
-password = 'password';
-isVisible: boolean = false;
+  isVisible: boolean = false;
 
-helo(){
-  const user = this.loginForm.controls.user.value;
-  const password = this.loginForm.controls.password.value;
-  
-  if (user === 'admin' && password === '123456'){
-    alert('logado')
-  } else {
-    alert('numfoi')
+  credentialEmitter = output<[string, string]>();
+
+
+  emitValues(){
+    const user = this.loginForm.controls.user.value as string;
+    const password = this.loginForm.controls.password.value as string;
+    this.credentialEmitter.emit([user, password]);
   }
-}
 
-loginForm = new FormGroup({
-  user: new FormControl('', [Validators.required, Validators.minLength(5)]),
-  password: new FormControl('', [Validators.required, Validators.minLength(6)])
-})
+  loginForm = new FormGroup({
+    user: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+  })
 
 
-autoLoginToggle(event: boolean){
-  console.log(event)
-}
+  autoLoginToggle(event: boolean){
+    console.log(event)
+  }
 
 }

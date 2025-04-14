@@ -1,14 +1,14 @@
 <main>
     <section class="login-image-section">
-        <img src="img/ranger.png" alt="">
+        <img src="http://localhost:3001/img/ranger.png" alt="">
     </section>
     <section class="login-form-section">
         <div class="welcome">
-            <img class="form-logo" src="img/ford.png" alt="form-logo" tabindex="-1">
+            <img class="form-logo" src="http://localhost:3001/img/ford.png" alt="form-logo" tabindex="-1">
             <h1 class="form-title">Boas-vindas</h1>
         </div>
         <form>
-            <app-form></app-form>
+            <app-form (credentialEmitter)="test($event)"></app-form>
         </form>
     </section>
 </main>
