@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios, { Axios, AxiosResponse } from 'axios';
-import { LocalStorageService } from '../localstorage/localstorage.service';
+import { SessionStorageService } from '../localstorage/sessionstorage.service';
 
 
 @Injectable({

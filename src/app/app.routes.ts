@@ -4,11 +4,11 @@ import { AuthService } from './services/auth/auth.service';
 
 export const routes: Routes = [
     {
-        path: "",
-        component: LoginComponent
+        path: "login",
+        loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent),
     },
     {
-        path: "home",
+        path: "",
         loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
         canActivate: [AuthService]
     },
@@ -16,5 +16,9 @@ export const routes: Routes = [
         path: "dashboard",
         loadComponent: () => import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent),
         canActivate: [AuthService]
+    },
+    {
+        path: "**",
+        redirectTo: ""
     }
 ];

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormComponent } from '../../components/form/form.component';
 import { ApiService } from '../../services/api/api.service';
 import { Router } from '@angular/router';
-import { LocalStorageService } from '../../services/localstorage/localstorage.service';
+import { SessionStorageService } from '../../services/localstorage/sessionstorage.service';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -16,10 +16,16 @@ export class LoginComponent {
   
   private router;
   private AuthService;
+  private autologin = false;
 
   constructor(auth:AuthService, router: Router){
     this.router = router;
     this.AuthService = auth;
+  }
+
+  changeAutoLogin(event: boolean){
+    this.autologin = event;
+    this.AuthService.setAutoLogin(event)
   }
 
   async login(event: [string, string]){
@@ -33,5 +39,4 @@ export class LoginComponent {
     this.AuthService.saveLogin(user);
     this.router.navigate(['/home'])
   }
-
 }

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { LocalStorageService } from '../localstorage/localstorage.service';
+import { inject, Injectable } from '@angular/core';
+import { SessionStorageService } from '../localstorage/sessionstorage.service';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -7,25 +7,44 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   
-  private localStorage: LocalStorageService;
   private router: Router;
-
-  constructor(ls: LocalStorageService, router: Router){
-    this.localStorage = ls;
+  private static isautologin: boolean = false;
+  
+  constructor(router: Router){
     this.router = router
   }
 
-  saveLogin<T>(user: T){
-    let currentogin = this.localStorage.get("user");
-    
-    if (!currentogin) this.localStorage.set("user", user);
-
-    this.localStorage.set('logged', true);
+  setAutoLogin(value: boolean){
+    AuthService.isautologin = value;
   }
+  
+  saveLogin<T>(user: T){
 
+    let localStorage;
+
+    if (AuthService.isautologin){
+      window.localStorage.clear()
+      localStorage = new SessionStorageService(window.localStorage)
+    } else {
+      localStorage = new SessionStorageService(window.sessionStorage)
+    }
+
+    let currentogin = localStorage.get("user");
+    
+    if (!currentogin) localStorage.set("user", user);
+    
+    localStorage.set('logged', true);
+  }
+  
   canActivate(): boolean{
-    if (this.localStorage.get("logged")) return true;
-    this.router.navigate(['']);
+    if (AuthService.isautologin){
+      if (window.localStorage.getItem("logged")) return true;
+      this.router.navigate(['login']);
+    } else {
+      if (window.sessionStorage.getItem("logged")) return true;
+      this.router.navigate(['login']);
+    }
+
     return false;
   }
 }

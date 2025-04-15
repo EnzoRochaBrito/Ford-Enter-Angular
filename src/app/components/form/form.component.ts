@@ -16,6 +16,7 @@ export class FormComponent {
   isVisible: boolean = false;
 
   credentialEmitter = output<[string, string]>();
+  autoLoginToggleEmitter = output<boolean>();
 
 
   emitValues(){
@@ -31,7 +32,7 @@ export class FormComponent {
 
 
   autoLoginToggle(event: boolean){
-    console.log(event)
+    this.autoLoginToggleEmitter.emit(event);
   }
 
 }
