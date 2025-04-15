@@ -5,18 +5,15 @@ const cors = require("cors")
 const app = express();
 
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname)));
 
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
     try {
-        console.log(req.body)
+        
         const { nome, senha } = req.body
-
-        console.log(nome)
-        console.log(senha)
 
         if (!nome || !senha) {
             return res.status(400).json({

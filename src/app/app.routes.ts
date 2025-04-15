@@ -1,19 +1,20 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AuthService } from './services/auth/auth.service';
 
 export const routes: Routes = [
     {
         path: "",
-        component: LoginComponent,
+        component: LoginComponent
     },
     {
         path: "home",
-        component: HomeComponent
+        loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
+        canActivate: [AuthService]
     },
     {
         path: "dashboard",
-        component: DashboardComponent
+        loadComponent: () => import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent),
+        canActivate: [AuthService]
     }
 ];

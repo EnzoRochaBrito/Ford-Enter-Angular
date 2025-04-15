@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import axios, { Axios, AxiosResponse } from 'axios';
+import { LocalStorageService } from '../localstorage/localstorage.service';
 
 
 @Injectable({
@@ -7,15 +9,21 @@ import { Injectable } from '@angular/core';
 
 export class ApiService {
 
+  
   static async login(_nome: string, _senha: string){
-    let _request = await fetch('http://localhost:3001/login', {
-      method: "post",
-      body: JSON.stringify({ nome : _nome, senha : _senha }
-      )
+
+    const credencial = {
+      nome: _nome,
+      senha: _senha
+    }
+
+    let value = axios.post('http://localhost:3001/login', credencial);
+
+    value.catch(reason => {
+      alert(reason.response.data.message)
     })
-    
-    let response = await _request.json();
-    console.log(response)
+
+    return value.then();
   }
 
 }
