@@ -23,7 +23,6 @@ export class AuthService {
     let localStorage;
 
     if (AuthService.isautologin){
-      window.localStorage.clear()
       localStorage = new SessionStorageService(window.localStorage)
     } else {
       localStorage = new SessionStorageService(window.sessionStorage)
@@ -37,14 +36,12 @@ export class AuthService {
   }
   
   canActivate(): boolean{
-    if (AuthService.isautologin){
       if (window.localStorage.getItem("logged")) return true;
-      this.router.navigate(['login']);
-    } else {
+  
       if (window.sessionStorage.getItem("logged")) return true;
-      this.router.navigate(['login']);
-    }
 
-    return false;
+      this.router.navigate(['login']);
+    
+      return false
   }
 }
