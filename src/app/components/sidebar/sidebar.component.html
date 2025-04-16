@@ -1,1 +1,10 @@
-<p>sidebar works!</p>
+<section class="sidebar">
+    <div class="logo box">
+        <img src="http://localhost:3001/img/ford.png" alt="">
+    </div>
+    <div class="pages">
+        <div *ngFor="let rota of pages" class="path box">
+            <a routerLink="{{rota.route}}">{{ rota.name }}</a>
+        </div>
+    </div>
+</section>

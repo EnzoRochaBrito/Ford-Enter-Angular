@@ -41,7 +41,6 @@ export class AuthService {
   
       else if (window.sessionStorage.getItem("logged")) return true;
 
-
       this.router.navigate(['login']);
     
       return false

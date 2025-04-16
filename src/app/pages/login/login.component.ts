@@ -37,6 +37,6 @@ export class LoginComponent {
     }
     
     this.AuthService.saveLogin(user);
-    this.router.navigate(['/home'])
+    this.router.navigate(['home'])
   }
 }
