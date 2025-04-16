@@ -1,0 +1,35 @@
+.card-box{
+    min-width: 640px;
+    width: 640px;
+    min-height: 480px;
+    height: 480px;
+    background-color: rgba(240, 240, 240, 0.5);
+    border-radius: 5px;
+    border: solid 1px gray;
+    .title-segment{
+        background-color: rgba(200, 200, 200, 0.5);
+        color: gray;
+        font-weight: 600;
+        height: fit-content;
+        padding: 5px;
+        border-radius: 5px 5px 0 0;
+        border-bottom: solid 1px gray;
+        p{
+            margin: 0;
+        }
+    }
+    .content-segment{
+        padding: 0 5px;
+        height: max-content;
+        max-width: 100%;
+        max-height: 90%;
+        overflow-y: auto;
+        color: var(--bs-blue);
+        &::-webkit-scrollbar{
+            width: 20px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: var(--bs-gray); 
+          }
+    }
+}

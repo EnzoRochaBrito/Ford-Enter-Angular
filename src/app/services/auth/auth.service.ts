@@ -25,6 +25,7 @@ export class AuthService {
     if (AuthService.isautologin){
       localStorage = new SessionStorageService(window.localStorage)
     } else {
+      window.localStorage.clear()
       localStorage = new SessionStorageService(window.sessionStorage)
     }
 
@@ -38,7 +39,8 @@ export class AuthService {
   canActivate(): boolean{
       if (window.localStorage.getItem("logged")) return true;
   
-      if (window.sessionStorage.getItem("logged")) return true;
+      else if (window.sessionStorage.getItem("logged")) return true;
+
 
       this.router.navigate(['login']);
     
