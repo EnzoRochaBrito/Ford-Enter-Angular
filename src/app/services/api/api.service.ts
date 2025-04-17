@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import axios, { Axios, AxiosResponse } from 'axios';
-import { SessionStorageService } from '../localstorage/sessionstorage.service';
+import axios from 'axios';
+import { Veiculos, VeiculosAPI } from '../../../utils/models/vehicle.model';
 
 
 @Injectable({
@@ -22,8 +22,18 @@ export class ApiService {
     value.catch(reason => {
       alert(reason.response.data.message)
     })
-
+    
     return value.then();
+  }
+  
+  static async vehicles(): Promise<VeiculosAPI>{
+    let vehicles = axios.get('http://localhost:3001/vehicles');
+    
+    vehicles.catch(reason => {
+      alert(reason.response.data.message)
+    })
+
+    return (await vehicles.then()).data;
   }
 
 }
