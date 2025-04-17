@@ -95,23 +95,63 @@ app.post("/vehicleData", (req, res) => {
             case "2FRHDUYS2Y63NHD22454":
                 return res.status(200).json({
                     id: 1,
+                    odometro: 23344,
+                    nivelCombustivel: 76,
+                    status: "on",
+                    lat: -12.2322,
+                    long: -35.2314
+                });
+
+            case "2RFAASDY54E4HDU34874":
+                return res.status(200).json({
+                    id: 2,
+                    odometro: 130000,
+                    nivelCombustivel: 19,
+                    status: "off",
+                    lat: -12.2322,
+                    long: -35.2314
+                });
+
+            case "2FRHDUYS2Y63NHD22455":
+                return res.status(200).json({
+                    id: 3,
                     odometro: 50000,
                     nivelCombustivel: 90,
                     status: "on",
                     lat: -12.2322,
                     long: -35.2314
                 });
-            
-            case "2RFAASOYS4E4HDU34875":
+
+            case "2RFAASDY54E4HDU34875":
                 return res.status(200).json({
-                    id: 2,
+                    id: 4,
                     odometro: 10000,
-                    nivelCombustivel: 90,
+                    nivelCombustivel: 25,
+                    status: "off",
+                    lat: -12.2322,
+                    long: -35.2314
+                });
+
+            case "2FRHDUYS2Y63NHD22654":
+                return res.status(200).json({
+                    id: 5,
+                    odometro: 23544,
+                    nivelCombustivel: 76,
                     status: "on",
                     lat: -12.2322,
                     long: -35.2314
                 });
-        
+
+            case "2FRHDUYS2Y63NHD22854":
+                return res.status(200).json({
+                    id: 6,
+                    odometro: 23574,
+                    nivelCombustivel: 76,
+                    status: "on",
+                    lat: -12.2322,
+                    long: -35.2314
+                });
+
             default:
                 return res.status(400).json({
                     message: "Código VIN utilizado não foi encontrado!"
