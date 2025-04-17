@@ -2,8 +2,10 @@
     <div class="background-image"></div>
     <app-sidebar></app-sidebar>
     <div class="content">
-        <app-card [title]="'Sistema de dados FORD'" class="welcome-card">
-           Seja bem vindo(a)!
+        <app-card [title]="'Sistema de dados FORD'" class="welcome-card" [ngStyle]="cardStyleHome">
+           <p class="welcome-text">
+               Seja bem vindo(a)!
+           </p>
         </app-card>
     </div>
 </main>
