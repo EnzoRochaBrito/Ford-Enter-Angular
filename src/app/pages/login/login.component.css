@@ -49,3 +49,35 @@ main section{
     color: var(--bs-blue);
 }
 
+@media (max-height: 720px) {
+    .welcome{
+        gap: 10vh;
+    }
+}
+
+@media (orientation: portrait){
+    main{
+        display: inline;
+    }
+    
+    .login-image-section{
+        width: 0;
+        max-width: 0 !important;
+        overflow: hidden;
+    }
+
+    .login-form-section{
+        width: 100vw;
+        min-width: 100vw;
+        height: 100dvh;
+        min-height: 100dvh;
+        .welcome{
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 768px) { /* tablets médios */ }
+@media (min-width: 1024px) { /* laptops */ }
+@media (min-width: 1280px) { /* desktops grandes */ }
+@media (min-width: 1536px) { /* telas ultra-wide */ }

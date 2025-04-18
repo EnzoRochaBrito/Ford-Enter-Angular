@@ -7,3 +7,7 @@ img{
 input{
     outline: none;
 }
+
+html, body{
+    height: 100%;
+}
