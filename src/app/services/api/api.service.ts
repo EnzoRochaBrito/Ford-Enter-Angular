@@ -40,9 +40,9 @@ export class ApiService {
   static async vehiclesData(vinCode: string): Promise<VehicleData>{
     let vehiclesData = axios.post('http://localhost:3001/vehicleData', {vin: vinCode});
     
-    vehiclesData.catch(reason => {
-      alert(reason.response.data.message)
-    })
+    // vehiclesData.catch(reason => {
+    //   alert(reason.response.data.message)
+    // })
 
     return (await vehiclesData.then()).data;
   }

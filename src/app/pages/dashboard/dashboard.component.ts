@@ -17,6 +17,7 @@ import { VehicleData } from '../../../utils/models/vehicleData.model';
 export class DashboardComponent {
 
   cardStyleDashboard = {'width': '20vw', 'height': '80%'}
+  cardStyleVin = {'width': 'max-content', 'height': 'max-content'}
 
   vehicles!: Veiculos;
   vehicleData!: VehicleData;
@@ -27,7 +28,7 @@ export class DashboardComponent {
   });
 
   searchCarVinForm = new FormGroup({
-    vinInput: new FormControl('2FRHDUYS2Y63NHD22454')
+    vinInput: new FormControl('')
   })
 
   onChanges(){
