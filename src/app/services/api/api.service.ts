@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { Veiculos, VeiculosAPI } from '../../../utils/models/vehicle.model';
+import { VeiculosAPI } from '../../../utils/models/vehicle.model';
+import { VehicleData } from '../../../utils/models/vehicleData.model';
 
 
 @Injectable({
@@ -34,6 +35,16 @@ export class ApiService {
     })
 
     return (await vehicles.then()).data;
+  }
+  
+  static async vehiclesData(vinCode: string): Promise<VehicleData>{
+    let vehiclesData = axios.post('http://localhost:3001/vehicleData', {vin: vinCode});
+    
+    vehiclesData.catch(reason => {
+      alert(reason.response.data.message)
+    })
+
+    return (await vehiclesData.then()).data;
   }
 
 }

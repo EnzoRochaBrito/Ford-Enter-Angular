@@ -47,9 +47,9 @@ app.get("/vehicles", (req, res) => {
             {
                 id: 1,
                 vehicle: "Ranger",
-                volumetotal: 1500,
-                connected: 500,
-                softwareUpdates: 750,
+                volumetotal: 145760,
+                connected: 70000,
+                softwareUpdates: 27550,
                 img: "http://localhost:3001/img/ranger.png"
             },
             {
@@ -63,17 +63,17 @@ app.get("/vehicles", (req, res) => {
             {
                 id: 3,
                 vehicle: "Territory",
-                volumetotal: 1500,
-                connected: 500,
-                softwareUpdates: 750,
+                volumetotal: 4560,
+                connected: 4000,
+                softwareUpdates: 3050,
                 img: "http://localhost:3001/img/territory.png"
             },
             {
                 id: 4,
                 vehicle: "Bronco Sport",
-                volumetotal: 1500,
-                connected: 500,
-                softwareUpdates: 750,
+                volumetotal: 7560,
+                connected: 4060,
+                softwareUpdates: 2050,
                 img: "http://localhost:3001/img/broncoSport.png"
             }
         ];
