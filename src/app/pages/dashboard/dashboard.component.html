@@ -50,7 +50,10 @@
             </app-card>
         </div>
         <div class="car-image">
-            <img *ngIf="selectedVehicle;" [src]="selectedVehicle.img" id="car-image">
+            <img *ngIf="selectedVehicle; else fordIcon" [src]="selectedVehicle.img" id="car-image">
+            <ng-template #fordIcon>
+                <img src="http://localhost:3001/img/ford.png" class="no-car-image" alt="">
+            </ng-template>
         </div>
         <div class="car-info">
             <table>
