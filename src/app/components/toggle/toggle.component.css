@@ -24,14 +24,13 @@
     top: 50%;
     left: 10%;
     transform: translateY(-50%);
-    transition: all .3s;
+    transition: all .2s;
     display: flex;
     justify-content: center;
     align-items: center;
     svg{
         color: gray;
-
-        scale: .7;
+        scale: .8;
     }
 }
 

@@ -3,7 +3,7 @@ import { Component, EventEmitter, Output, output } from '@angular/core';
 
 @Component({
   selector: 'app-toggle',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './toggle.component.html',
   styleUrl: './toggle.component.css',
   animations: [
