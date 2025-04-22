@@ -21,6 +21,7 @@
     display: flex;
     border: solid 1px gray;
     align-items: center;
+    position: relative;
     small{
         color: red;
         display: inline-block;
@@ -28,17 +29,28 @@
     }
     .input-icon{
         color: var(--bs-teal);
+        /* display: none; */
     }
     input{
         width: auto;
-        margin-left: .5rem;
+        /* padding: 5px 0 5px calc(3vw*1000rem);
+        margin-left: .5rem; */
         border: none;
         outline: none;
-        background: var(--bs-white);
+        /* background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/480px-User_icon_2.svg.png");
+        background-size: 3dvb;
+        background-repeat: no-repeat;
+        background-position-y: center; */
+        background-color: var(--bs-white);
         flex: 1;
         &::placeholder{
             color: gray;
         }
+    }
+
+    .change-visibility{
+        position: absolute;
+        right: 0;
     }
 }
 
@@ -92,12 +104,6 @@ button{
     align-items: center;
     margin-right: 5px;
     cursor: pointer;
-}
-
-@media (max-width: 820px) {
-    input{
-        max-width: 70%;
-    }
 }
 
 @media (max-height: 470px){
