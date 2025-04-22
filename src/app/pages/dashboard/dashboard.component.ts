@@ -7,10 +7,11 @@ import { Veiculo, Veiculos, VeiculosAPI } from '../../../utils/models/vehicle.mo
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { VehicleData } from '../../../utils/models/vehicleData.model';
+import { UserComponent } from '../../components/user/user.component';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [SidebarComponent, CardComponent, CommonModule, ReactiveFormsModule],
+  imports: [SidebarComponent, CardComponent, CommonModule, ReactiveFormsModule, UserComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
