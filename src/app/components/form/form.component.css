@@ -111,3 +111,10 @@ button{
         gap: 2vh;
     }
 }
+@media (max-width: 400px) {
+    .text-input-wrapper{
+        input{
+            max-width: 80%;
+        }
+    }
+}
