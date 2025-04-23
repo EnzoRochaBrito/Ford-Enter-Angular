@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { VeiculosAPI } from '../../../utils/models/vehicle.model';
-import { VehicleData } from '../../../utils/models/vehicleData.model';
+import { VeiculosAPI } from '../../../utils/models/vehicle/vehicle.model';
+import { VehicleData } from '../../../utils/models/vehicle/vehicleData.model';
 
 
 @Injectable({

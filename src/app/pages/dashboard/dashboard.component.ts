@@ -3,10 +3,10 @@ import { SidebarComponent } from "../../components/sidebar/sidebar.component";
 import { CardComponent } from '../../components/card/card.component';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api/api.service';
-import { Veiculo, Veiculos, VeiculosAPI } from '../../../utils/models/vehicle.model';
+import { Veiculo, Veiculos, VeiculosAPI } from '../../../utils/models/vehicle/vehicle.model';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs';
-import { VehicleData } from '../../../utils/models/vehicleData.model';
+import { VehicleData } from '../../../utils/models/vehicle/vehicleData.model';
 import { UserComponent } from '../../components/user/user.component';
 
 @Component({
@@ -23,7 +23,6 @@ export class DashboardComponent {
   vehicles!: Veiculos;
   vehicleData!: VehicleData;
   selectedVehicle!: Veiculo;
-
   selectCarForm = new FormGroup({
     carSelect: new FormControl('')
   });

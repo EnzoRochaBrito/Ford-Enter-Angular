@@ -38,7 +38,7 @@ main section{
     display: flex;
     flex-direction: column;
     gap: 10rem;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     .form-logo{
         max-width: 45%;
