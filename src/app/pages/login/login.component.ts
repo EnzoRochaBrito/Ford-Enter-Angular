@@ -4,10 +4,11 @@ import { ApiService } from '../../services/api/api.service';
 import { Router } from '@angular/router';
 import { SessionStorageService } from '../../services/localstorage/sessionstorage.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { AlertComponent } from '../../components/alert/alert.component';
 
 @Component({
   selector: 'app-login',
-  imports: [FormComponent],
+  imports: [FormComponent, AlertComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
