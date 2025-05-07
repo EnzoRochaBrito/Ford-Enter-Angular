@@ -13,42 +13,50 @@
         <div class="title">
             <h1>Dashboard Ford</h1>
         </div>
-        <div class="info-cards">
-            <app-card [ngStyle]="cardStyleDashboard" title="Veículo">
-                <div class="select-wrapper">
-                    <form [formGroup]="selectCarForm" method="get">
-                        <select id="car-selector" formControlName="carSelect">
-                            <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
-                                {{vehicle.vehicle}}
-                            </option>
-                        </select>
-                    </form>
-                </div>
-            </app-card>
-            <app-card [ngStyle]="cardStyleDashboard" title="Total de Vendas">
-                <div class="info">
-                    <div class="info-wrapper">
-                        <h2 class="data" id="total-vendas" *ngIf="selectedVehicle; else emptyTemplate">{{selectedVehicle.volumetotal}}</h2>
-                        <p class="ord">Unid.</p>
+        <div class="info-cards row row-gap-2 row-gap-md-0">
+            <div class="col-6 col-md-3 col-xl-2">
+                <app-card [ngStyle]="cardStyleDashboard" title="Veículo">
+                    <div class="select-wrapper">
+                        <form [formGroup]="selectCarForm" method="get" style="margin: 35px 0;">
+                            <select id="car-selector" formControlName="carSelect">
+                                <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
+                                    {{vehicle.vehicle}}
+                                </option>
+                            </select>
+                        </form>
                     </div>
-                </div>
-            </app-card>
-            <app-card [ngStyle]="cardStyleDashboard" title="Conectados">
-                <div class="info">
-                    <div class="info-wrapper">
-                        <h2 class="data" id="conectados" *ngIf="selectedVehicle; else emptyTemplate">{{selectedVehicle.connected}}</h2>
-                        <p class="ord">Unid.</p>
+                </app-card>
+            </div>
+            <div class="col-6 col-md-3 col-xl-2">
+                <app-card [ngStyle]="cardStyleDashboard" title="Total de Vendas">
+                    <div class="info">
+                        <div class="info-wrapper">
+                            <h2 class="data" id="total-vendas" *ngIf="selectedVehicle; else emptyTemplate">{{selectedVehicle.volumetotal}}</h2>
+                            <p class="ord">Unid.</p>
+                        </div>
                     </div>
-                </div>
-            </app-card>
-            <app-card [ngStyle]="cardStyleDashboard" title="Update Software">
-                <div class="info">
-                    <div class="info-wrapper">
-                        <h2 class="data" id="update-software" *ngIf="selectedVehicle; else emptyTemplate">{{selectedVehicle.softwareUpdates}}</h2>
-                        <p class="ord">Unid.</p>
+                </app-card>
+            </div>
+            <div class="col-6 col-md-3 col-xl-2">
+                <app-card [ngStyle]="cardStyleDashboard" title="Conectados">
+                    <div class="info">
+                        <div class="info-wrapper">
+                            <h2 class="data" id="conectados" *ngIf="selectedVehicle; else emptyTemplate">{{selectedVehicle.connected}}</h2>
+                            <p class="ord">Unid.</p>
+                        </div>
                     </div>
-                </div>
-            </app-card>
+                </app-card>
+            </div>
+            <div class="col-6 col-md-3 col-xl-2">
+                <app-card [ngStyle]="cardStyleDashboard" title="Update Software">
+                    <div class="info">
+                        <div class="info-wrapper">
+                            <h2 class="data" id="update-software" *ngIf="selectedVehicle; else emptyTemplate">{{selectedVehicle.softwareUpdates}}</h2>
+                            <p class="ord">Unid.</p>
+                        </div>
+                    </div>
+                </app-card>
+            </div>
         </div>
         <div class="car-image">
             <img *ngIf="selectedVehicle; else fordIcon" [src]="selectedVehicle.img" id="car-image">

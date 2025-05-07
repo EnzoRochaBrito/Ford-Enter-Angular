@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api/api.service';
 import { Veiculo, Veiculos, VeiculosAPI } from '../../../utils/models/vehicle/vehicle.model';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { debounceTime } from 'rxjs';
+import { debounceTime, filter } from 'rxjs';
 import { VehicleData } from '../../../utils/models/vehicle/vehicleData.model';
 import { UserComponent } from '../../components/user/user.component';
 
@@ -17,7 +17,7 @@ import { UserComponent } from '../../components/user/user.component';
 })
 export class DashboardComponent {
 
-  cardStyleDashboard = {'width': '20vw', 'height': '80%'}
+  cardStyleDashboard = {'width': '20vw'}
   cardStyleVin = {'width': 'max-content', 'height': 'max-content'}
 
   vehicles!: Veiculos;
@@ -40,8 +40,8 @@ export class DashboardComponent {
     })
 
     this.searchCarVinForm.controls.vinInput.valueChanges // mudar pelo vin
-      .pipe(debounceTime(300))
-      .subscribe(vin => this.getVehicleDataById(String(vin)))
+      .pipe(debounceTime(300), filter((a:any) => a.trim().length > 19))
+      .subscribe((vin:string) => this.getVehicleDataById(vin))
 
   }
 
