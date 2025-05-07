@@ -77,7 +77,7 @@
                 <tr>
                     <td id="car-cod">
                         <form class="vin-form" [formGroup]="searchCarVinForm">
-                            <input class="vin-input" type="text" formControlName="vinInput">
+                            <input class="vin-input" type="text" formControlName="vinInput" style="min-width: 100px;">
                         </form>
                     </td>
                     <td id="odometro" *ngIf="vehicleData; else emptyCell">{{ vehicleData.odometro }}</td>
