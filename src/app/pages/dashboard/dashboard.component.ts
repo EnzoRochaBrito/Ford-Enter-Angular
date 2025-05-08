@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SidebarComponent } from "../../components/sidebar/sidebar.component";
 import { CardComponent } from '../../components/card/card.component';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api/api.service';
 import { Veiculo, Veiculos, VeiculosAPI } from '../../../utils/models/vehicle/vehicle.model';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { debounceTime, filter } from 'rxjs';
+import { debounceTime, filter, Subscription } from 'rxjs';
 import { VehicleData } from '../../../utils/models/vehicle/vehicleData.model';
 import { UserComponent } from '../../components/user/user.component';
 
@@ -15,7 +15,7 @@ import { UserComponent } from '../../components/user/user.component';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnDestroy{
 
   cardStyleDashboard = {'width': '20vw'}
   cardStyleVin = {'width': 'max-content', 'height': 'max-content'}
@@ -23,6 +23,10 @@ export class DashboardComponent {
   vehicles!: Veiculos;
   vehicleData!: VehicleData;
   selectedVehicle!: Veiculo;
+
+  private carFormSub!: Subscription;
+  private searchVinSub!: Subscription;
+
   selectCarForm = new FormGroup({
     carSelect: new FormControl('')
   });
@@ -35,11 +39,11 @@ export class DashboardComponent {
 
     // https://www.digitalocean.com/community/tutorials/angular-reactive-forms-valuechanges
     
-    this.selectCarForm.controls.carSelect.valueChanges.subscribe(id => { // mudar pelo select
+    this.carFormSub = this.selectCarForm.controls.carSelect.valueChanges.subscribe(id => { // mudar pelo select
       this.selectedVehicle = this.getVehicleById(Number(id));
     })
 
-    this.searchCarVinForm.controls.vinInput.valueChanges // mudar pelo vin
+    this.searchVinSub = this.searchCarVinForm.controls.vinInput.valueChanges // mudar pelo vin
       .pipe(debounceTime(300), filter((a:any) => a.trim().length > 19))
       .subscribe((vin:string) => this.getVehicleDataById(vin))
 
@@ -58,4 +62,8 @@ export class DashboardComponent {
     this.vehicleData = await ApiService.vehiclesData(vin);
   }
   
+  ngOnDestroy(): void {
+    this.carFormSub.unsubscribe()
+    this.searchVinSub.unsubscribe()
+  }
 }
