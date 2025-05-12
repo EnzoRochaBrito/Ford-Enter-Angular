@@ -81,7 +81,7 @@
                         </form>
                     </td>
                     <td id="odometro" *ngIf="vehicleData; else emptyCell">{{ vehicleData.odometro }}</td>
-                    <td id="combustivel" *ngIf="vehicleData; else emptyCell">{{ vehicleData.nivelCombustivel }}</td>
+                    <td id="combustivel" *ngIf="vehicleData; else emptyCell">{{ vehicleData.nivelCombustivel }}%</td>
                     <td id="status" *ngIf="vehicleData; else emptyCell">{{ vehicleData.status }}</td>
                     <td id="latitude" *ngIf="vehicleData; else emptyCell">{{ vehicleData.lat }}</td>
                     <td id="longitude" *ngIf="vehicleData; else emptyCell">{{ vehicleData.long }}</td>
